@@ -1,28 +1,692 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="eu">
 <head>
     <meta charset="UTF-8">
-    <title>Mis Enlaces</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DB Irakasleen Prestakuntza · Digitalizazioa</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
     <style>
-        body { font-family: Arial, sans-serif; text-align: center; background-color: #f4f4f4; padding: 50px; }
-        .link-button { 
-            display: block; width: 250px; margin: 10px auto; padding: 15px;
-            background-color: #007bff; color: white; text-decoration: none;
-            border-radius: 5px; font-weight: bold;
+        :root {
+            --navy: #0D1B3E;
+            --navy-mid: #1A2F5E;
+            --navy-light: #2B4A8A;
+            --orange: #E85D1A;
+            --orange-light: #FF7A3C;
+            --orange-glow: rgba(232, 93, 26, 0.15);
+            --cream: #F7F4EE;
+            --cream-dark: #EDE9E0;
+            --text-light: #FFFFFF;
+            --text-muted: rgba(255,255,255,0.75);
+            --gold: #C9952A;
         }
-        .link-button:hover { background-color: #0056b3; }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--navy);
+            color: var(--text-light);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* ─── HERO ─── */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 3rem 2rem 5rem;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 80% 60% at 50% 100%, rgba(232,93,26,0.18) 0%, transparent 70%),
+                radial-gradient(ellipse 60% 40% at 80% 20%, rgba(43,74,138,0.4) 0%, transparent 60%),
+                var(--navy);
+            z-index: 0;
+        }
+
+        /* geometric decoration */
+        .hero-bg::before {
+            content: '';
+            position: absolute;
+            top: -80px; right: -80px;
+            width: 420px; height: 420px;
+            border: 1px solid rgba(232,93,26,0.12);
+            border-radius: 50%;
+        }
+        .hero-bg::after {
+            content: '';
+            position: absolute;
+            bottom: 60px; left: -100px;
+            width: 320px; height: 320px;
+            border: 1px solid rgba(43,74,138,0.3);
+            border-radius: 50%;
+        }
+
+        .hero-grid-lines {
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+            background-size: 60px 60px;
+        }
+
+        .hero-content { position: relative; z-index: 1; max-width: 780px; }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.72rem;
+            font-weight: 500;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--orange-light);
+            margin-bottom: 1.5rem;
+            padding: 6px 16px;
+            border: 1px solid rgba(232,93,26,0.3);
+            border-radius: 999px;
+        }
+        .eyebrow-dot {
+            width: 6px; height: 6px;
+            background: var(--orange);
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(0.7); }
+        }
+
+        .hero h1 {
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(2.8rem, 7vw, 5.5rem);
+            font-weight: 800;
+            line-height: 1.0;
+            letter-spacing: -0.02em;
+            color: var(--text-light);
+            margin-bottom: 1.2rem;
+        }
+
+        .hero h1 .accent {
+            color: var(--orange);
+            display: block;
+        }
+
+        .hero-sub {
+            font-size: 1.05rem;
+            font-weight: 300;
+            color: var(--text-muted);
+            line-height: 1.7;
+            max-width: 520px;
+            margin: 0 auto 2.5rem;
+        }
+
+        .hero-meta {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            font-size: 0.82rem;
+            color: var(--text-muted);
+        }
+        .hero-meta span { display: flex; align-items: center; gap: 6px; }
+        .hero-meta svg { width: 14px; height: 14px; opacity: 0.6; }
+
+        .scroll-hint {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-muted);
+            font-size: 0.72rem;
+            letter-spacing: 0.1em;
+        }
+        .scroll-hint .arrow {
+            width: 24px; height: 24px;
+            border-right: 1.5px solid var(--text-muted);
+            border-bottom: 1.5px solid var(--text-muted);
+            transform: rotate(45deg);
+            animation: bounceDown 1.8s ease-in-out infinite;
+        }
+        @keyframes bounceDown {
+            0%, 100% { transform: rotate(45deg) translateY(0); }
+            50% { transform: rotate(45deg) translateY(5px); }
+        }
+
+        /* ─── MAIN CONTENT ─── */
+        .main {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 1.5rem 6rem;
+        }
+
+        /* section label */
+        .section-label {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--orange);
+            margin-bottom: 2rem;
+        }
+        .section-label::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: rgba(232,93,26,0.2);
+        }
+
+        /* ─── BLOCKS ─── */
+        .block {
+            margin-bottom: 3rem;
+        }
+
+        .block-title {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.55rem;
+            font-weight: 700;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .block-title .num {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--orange);
+            border: 1px solid var(--orange);
+            border-radius: 4px;
+            padding: 2px 8px;
+            letter-spacing: 0.05em;
+        }
+
+        .block-desc {
+            font-size: 1rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+            max-width: 640px;
+        }
+
+        /* ─── CARD GRID ─── */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 12px;
+        }
+
+        .card {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 14px;
+            padding: 1.4rem 1.2rem;
+            text-decoration: none;
+            color: var(--text-light);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            transition: all 0.22s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--orange), transparent);
+            opacity: 0;
+            transition: opacity 0.22s;
+        }
+
+        .card:hover {
+            background: rgba(232,93,26,0.08);
+            border-color: rgba(232,93,26,0.3);
+            transform: translateY(-3px);
+        }
+        .card:hover::before { opacity: 1; }
+
+        .card-icon {
+            width: 36px; height: 36px;
+            background: var(--orange-glow);
+            border: 1px solid rgba(232,93,26,0.25);
+            border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 18px;
+        }
+
+        .card-name {
+            font-family: 'Syne', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-light);
+        }
+
+        .card-sub {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        .card-arrow {
+            margin-top: auto;
+            font-size: 0.75rem;
+            color: var(--orange);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* tag: non-link cards */
+        .card.no-link {
+            cursor: default;
+        }
+        .card.no-link:hover {
+            transform: none;
+        }
+
+        /* badge */
+        .badge {
+            display: inline-block;
+            font-size: 0.65rem;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            padding: 3px 8px;
+            border-radius: 6px;
+            background: rgba(201,149,42,0.15);
+            color: var(--gold);
+            border: 1px solid rgba(201,149,42,0.25);
+        }
+
+        .badge.blue {
+            background: rgba(43,74,138,0.25);
+            color: #80A8E8;
+            border-color: rgba(43,74,138,0.4);
+        }
+
+        /* ─── VIDEO LIST ─── */
+        .video-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .video-item {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 14px 18px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.07);
+            border-radius: 12px;
+            transition: all 0.18s;
+        }
+
+        .video-item:hover {
+            background: rgba(255,255,255,0.06);
+            border-color: rgba(255,255,255,0.12);
+        }
+
+        .video-num {
+            font-family: 'Syne', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: var(--orange);
+            min-width: 24px;
+            opacity: 0.7;
+        }
+
+        .video-name {
+            font-size: 1rem;
+            color: var(--text-light);
+            flex: 1;
+        }
+
+        .video-tag {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+        }
+
+        /* ─── DIVIDER ─── */
+        .divider {
+            height: 1px;
+            background: rgba(255,255,255,0.07);
+            margin: 3.5rem 0;
+        }
+
+        /* ─── NOTE BOX ─── */
+        .note {
+            background: rgba(43,74,138,0.1);
+            border: 1px solid rgba(43,74,138,0.25);
+            border-left: 3px solid var(--navy-light);
+            border-radius: 10px;
+            padding: 1rem 1.25rem;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-top: 1rem;
+        }
+        .note strong { color: var(--text-light); font-weight: 500; }
+
+        /* ─── FOOTER ─── */
+        footer {
+            text-align: center;
+            padding: 2.5rem 1.5rem;
+            border-top: 1px solid rgba(255,255,255,0.06);
+            font-size: 0.78rem;
+            color: var(--text-muted);
+        }
+        footer .db {
+            font-family: 'Syne', sans-serif;
+            font-weight: 700;
+            color: var(--orange);
+            font-size: 1rem;
+        }
+
+        /* entrance animations */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(24px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        .hero-content > * {
+            animation: fadeUp 0.7s ease both;
+        }
+        .hero-content > *:nth-child(1) { animation-delay: 0.1s; }
+        .hero-content > *:nth-child(2) { animation-delay: 0.22s; }
+        .hero-content > *:nth-child(3) { animation-delay: 0.34s; }
+        .hero-content > *:nth-child(4) { animation-delay: 0.46s; }
     </style>
 </head>
 <body>
-    <h1>Jolastera / A jugar</h1>
-    
-    <a href="https://script.google.com/macros/s/AKfycbxMfGhZt68X3YPK2T9FsaN4GstzrphgiJPWcWB2WroTmLklPClsyUHfJL3HnvBiIySv/exec" class="link-button">Jolastera</a>
-    <a href="https://script.google.com/a/macros/donbosco.eus/s/AKfycbyoCrO2Jr_hvZDXbcxeRkmzVvAn6kshQ_XibP1mMUoM0N5k3e2Aci5BaGbp9B091tjSxw/exec" class="link-button">A jugar</a>
 
-     <h1>Don Bosco Quizz</h1>
-        
-    <a href="https://script.google.com/a/macros/donbosco.eus/s/AKfycbz0H3s9flbDOi008jYYDVuVvM3uhFjiPoJcvW9yvbCWPjVWQ4g6UZ3ZCjE21cKx652J7g/exec" class="link-button">Bisitaren aurretik</a>
-    <a href="https://script.google.com/a/macros/donbosco.eus/s/AKfycbz13QCqL2gt2BpvkJM0GUfFBBV1lW8wEm8sn_7z-88DHWXxprDhqFD2QG1pzKkjAInK2w/exec" class="link-button">Antes de la visita</a>
-    
+<!-- ═══════════════ HERO ═══════════════ -->
+<section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid-lines"></div>
+
+    <div class="hero-content">
+        <div class="eyebrow">
+            <span class="eyebrow-dot"></span>
+            CIFP Don Bosco · Errenteria
+        </div>
+
+        <h1>
+            Irakasleen
+            <span class="accent">Prestakuntza</span>
+        </h1>
+
+        <p class="hero-sub">
+            Digitalizazioa ikasgelan: tresnak, jokoak eta metodologia aktiboak.<br>
+            Saio praktikoa eta elkarreragilea.
+        </p>
+
+        <div class="hero-meta">
+            <span>
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6.5"/><path d="M8 4.5v4l2.5 2"/></svg>
+                2025 · Ikasturte honetan
+            </span>
+            <span>
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 4h12M2 8h12M2 12h7"/></svg>
+                5 bloke nagusi
+            </span>
+        </div>
+    </div>
+
+    <div class="scroll-hint">
+        <span>jaitsi</span>
+        <div class="arrow"></div>
+    </div>
+</section>
+
+<!-- ═══════════════ MAIN ═══════════════ -->
+<main class="main">
+
+    <!-- ── 1. AURKEZPEN BIDEOA ── -->
+    <div class="block">
+        <div class="section-label">01 · Hasiera</div>
+
+        <h2 class="block-title">
+            <span class="num">01</span>
+            DB Aurkezpen Bideoa
+        </h2>
+        <p class="block-desc">
+            Zentroko aurkezpen bideoa proiektatu. Sisteman gordeta dago eta USB bidez ere exekutatzeko aukera erakutsiko dugu.
+        </p>
+
+        <div class="card-grid">
+            <div class="card no-link">
+                <div class="card-icon">🎬</div>
+                <div class="card-name">Bideoa sisteman</div>
+                <div class="card-sub">Ordenagailutik zuzenean exekutatzeko prest</div>
+                <div style="margin-top:auto;"><span class="badge">Sisteman gordeta</span></div>
+            </div>
+            <div class="card no-link">
+                <div class="card-icon">🔌</div>
+                <div class="card-name">USB bidez</div>
+                <div class="card-sub">Kanpoko unitate batetik nola exekutatu erakutsiko dugu</div>
+                <div style="margin-top:auto;"><span class="badge">Demo praktikoa</span></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- ── 2. GITHUB WEB + JOLASAK ── -->
+    <div class="block">
+        <div class="section-label">02 · Jokoak eta Quizz</div>
+
+        <h2 class="block-title">
+            <span class="num">02</span>
+            Github Web · Jolas Gunea
+        </h2>
+        <p class="block-desc">
+            Github-eko web batera sartuko gara. Bertan bi tresna nagusi daude: ikasleen jolasak eta Don Bosco Quizz-a.
+        </p>
+
+        <div class="card-grid">
+            <a href="https://script.google.com/macros/s/AKfycbxMfGhZt68X3YPK2T9FsaN4GstzrphgiJPWcWB2WroTmLklPClsyUHfJL3HnvBiIySv/exec" class="card" target="_blank" rel="noopener">
+                <div class="card-icon">🎮</div>
+                <div class="card-name">Jolastera</div>
+                <div class="card-sub">Ikasleentzako jolas interaktiboa · Paretara bidali, leihoa handitu, mugitu, blokeatu…</div>
+                <div class="card-arrow">Ireki ↗</div>
+            </a>
+            <a href="https://script.google.com/a/macros/donbosco.eus/s/AKfycbyoCrO2Jr_hvZDXbcxeRkmzVvAn6kshQ_XibP1mMUoM0N5k3e2Aci5BaGbp9B091tjSxw/exec" class="card" target="_blank" rel="noopener">
+                <div class="card-icon">🕹️</div>
+                <div class="card-name">A Jugar</div>
+                <div class="card-sub">Domeinuko bertsio alternatiboa</div>
+                <div class="card-arrow">Ireki ↗</div>
+            </a>
+        </div>
+
+        <div class="note" style="margin-top:1.2rem;">
+            <strong>Jolas-teknikak:</strong> Paretara bidaltzea, leihoa handitzea, mugitzea eta blokeatzea nola egiten den azalduko dugu zuzenean.
+        </div>
+    </div>
+
+    <!-- ── DB QUIZZ ── -->
+    <div class="block" style="margin-top: 2rem;">
+        <h2 class="block-title">
+            <span class="num">02b</span>
+            Don Bosco Quizz
+        </h2>
+        <p class="block-desc">
+            Zentroko bisitaren aurretik pasatu beharreko quizz-a. Bi bertsio daude: euskeraz eta gaztelaniaz.
+        </p>
+
+        <div class="card-grid">
+            <a href="https://script.google.com/a/macros/donbosco.eus/s/AKfycbz0H3s9flbDOi008jYYDVuVvM3uhFjiPoJcvW9yvbCWPjVWQ4g6UZ3ZCjE21cKx652J7g/exec" class="card" target="_blank" rel="noopener">
+                <div class="card-icon">🧠</div>
+                <div class="card-name">Bisitaren aurretik</div>
+                <div class="card-sub">Euskarazko bertsioa · Don Bosco Quizz</div>
+                <div class="card-arrow">Ireki ↗</div>
+            </a>
+            <a href="https://script.google.com/a/macros/donbosco.eus/s/AKfycbz13QCqL2gt2BpvkJM0GUfFBBV1lW8wEm8sn_7z-88DHWXxprDhqFD2QG1pzKkjAInK2w/exec" class="card" target="_blank" rel="noopener">
+                <div class="card-icon">🧩</div>
+                <div class="card-name">Antes de la visita</div>
+                <div class="card-sub">Gaztelaniazko bertsioa · Don Bosco Quizz</div>
+                <div class="card-arrow">Ireki ↗</div>
+            </a>
+        </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- ── 3. KAHOOT ── -->
+    <div class="block">
+        <div class="section-label">03 · Talde-jokoa</div>
+
+        <h2 class="block-title">
+            <span class="num">03</span>
+            Kahoot! · Nominak
+        </h2>
+        <p class="block-desc">
+            Irakasleen izenak erabiliz sortutako Kahoot galdetegi dinamikoa. Taldea aktibatzeko eta giroa beroa jartzeko.
+        </p>
+
+        <div class="card-grid">
+            <a href="https://play.kahoot.it/v2/?quizId=51c4143c-5cdc-4b57-87d0-4c2f52001bf4" class="card" target="_blank" rel="noopener">
+                <div class="card-icon">⚡</div>
+                <div class="card-name">Kahoot Nominak</div>
+                <div class="card-sub">Zentroko irakasleen izenak oinarri hartuta prestatutako jolasa</div>
+                <div class="card-arrow">Ireki ↗</div>
+            </a>
+            <div class="card no-link">
+                <div class="card-icon">📱</div>
+                <div class="card-name">Nola sartu</div>
+                <div class="card-sub">kahoot.it · Kodea pantailan agertuko da</div>
+                <div style="margin-top:auto;"><span class="badge">Live</span></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- ── 4. GENIALLY ── -->
+    <div class="block">
+        <div class="section-label">04 · Genially</div>
+
+        <h2 class="block-title">
+            <span class="num">04</span>
+            Genially · Scape Room edo Trivial
+        </h2>
+        <p class="block-desc">
+            Bi aukera dauzkagu. Bat aukeratu behar dugu saiorako. Bien aurkezpena egin eta erabakia denon artean hartuko dugu.
+        </p>
+
+        <div class="card-grid">
+            <div class="card no-link" style="border-color: rgba(232,93,26,0.2);">
+                <div class="card-icon">🔐</div>
+                <div class="card-name">Scape Room</div>
+                <div class="card-sub">Zein ateratzen da lehenengo? Olatz-en bertsioa eguneratuta dago. Prestatzeko dago.</div>
+                <div style="margin-top:auto; display:flex; gap:6px; flex-wrap:wrap;">
+                    <span class="badge">Prestatzeko</span>
+                    <span class="badge blue">Lehiakorra</span>
+                </div>
+            </div>
+            <a href="https://view.genially.com/69e7366740c428fcd31f1b27" class="card" target="_blank" rel="noopener" style="border-color: rgba(43,74,138,0.3);">
+                <div class="card-icon">🎯</div>
+                <div class="card-name">Trivial</div>
+                <div class="card-sub">A aldean planteatutako moduan. Talde-dinamika eta galdera-erantzun formatua.</div>
+                <div style="margin-top:auto; display:flex; gap:6px; flex-wrap:wrap;">
+                    <span class="badge blue">Lankidetza</span>
+                </div>
+                <div class="card-arrow">Ireki ↗</div>
+            </a>
+        </div>
+
+        <div class="note" style="border-left-color: var(--orange); background: rgba(232,93,26,0.06);">
+            <strong>⚠️ Oraindik prestatzeko:</strong> Genially jarduerak oraindik bukatuak ez daudenez, saioaren aurretik prestatu behar dira. Bietako bat aukeratzea gomendatzen da.
+        </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- ── 5. YOUTUBE 360º ── -->
+    <div class="block">
+        <div class="section-label">05 · Saioaren itxiera</div>
+
+        <h2 class="block-title">
+            <span class="num">05</span>
+            YouTube · 360° Bideoak
+        </h2>
+        <p class="block-desc">
+            Saioa amaitzeko, 360 graduko Youtube bideo bat jarriko dugu. Zikloen arabera aukeratuko dugu, eta nola jartzen den ere azalduko dugu zuzenean.
+        </p>
+
+        <div class="video-list">
+            <a href="https://www.youtube.com/watch?v=d9D5csXovEM&list=PLncOCZ_bu7NIiC4RmMJ8UUd8jWmSBQS1w&index=3&t=1s" class="video-item" target="_blank" rel="noopener" style="text-decoration:none; color:inherit;">
+                <span class="video-num">01</span>
+                <span class="video-name">Viaje al interior del cuerpo humano</span>
+                <span class="video-tag">Osasuna · Biologia ↗</span>
+            </a>
+            <a href="https://www.youtube.com/watch?v=wfNvZwN87Hg" class="video-item" target="_blank" rel="noopener" style="text-decoration:none; color:inherit;">
+                <span class="video-num">02</span>
+                <span class="video-name">Racecar</span>
+                <span class="video-tag">Teknologia · Adrenalina ↗</span>
+            </a>
+            <a href="https://www.youtube.com/watch?v=SBia0Zv82VQ&list=PLncOCZ_bu7NIiC4RmMJ8UUd8jWmSBQS1w&index=23" class="video-item" target="_blank" rel="noopener" style="text-decoration:none; color:inherit;">
+                <span class="video-num">03</span>
+                <span class="video-name">El cerebro por dentro</span>
+                <span class="video-tag">Zientzia · Neurologia ↗</span>
+            </a>
+            <a href="https://www.youtube.com/watch?v=QR9I-e9Wq3U&list=PLncOCZ_bu7NIiC4RmMJ8UUd8jWmSBQS1w&index=9" class="video-item" target="_blank" rel="noopener" style="text-decoration:none; color:inherit;">
+                <span class="video-num">04</span>
+                <span class="video-name">Ascenso a un volcán</span>
+                <span class="video-tag">Geologia · Natura ↗</span>
+            </a>
+            <a href="https://www.youtube.com/watch?v=jqq_ZdD5Zwg" class="video-item" target="_blank" rel="noopener" style="text-decoration:none; color:inherit;">
+                <span class="video-num">05</span>
+                <span class="video-name">Relax</span>
+                <span class="video-tag">Ongizatea · Lasaiketa ↗</span>
+            </a>
+            <a href="https://www.youtube.com/watch?v=7AkbUfZjS5k" class="video-item" target="_blank" rel="noopener" style="text-decoration:none; color:inherit;">
+                <span class="video-num">06</span>
+                <span class="video-name">Relax II</span>
+                <span class="video-tag">Ongizatea · Lasaiketa ↗</span>
+            </a>
+        </div>
+
+        <div class="note">
+            <strong>Nola egin:</strong> YouTube-en bideoa abiarazi, pantaila-modu osora pasa eta sagua edo ukipen-pantaila erabiliz 360 graduz mugitu daiteke. Saio amaieran azalduko dugu teknika.
+        </div>
+    </div>
+
+</main>
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<footer>
+    <p class="db">CIFP Don Bosco</p>
+    <p style="margin-top:6px;">Errenteria · Gipuzkoa · Eusko Jaurlaritza</p>
+    <p style="margin-top:4px; font-size:0.7rem; opacity:0.4;">Irakasleen Prestakuntza · Digitalizazioa ikasgelan</p>
+</footer>
+
 </body>
 </html>
