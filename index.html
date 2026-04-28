@@ -457,19 +457,16 @@
         <button class="phase-toggle" onclick="togglePhase(this)" data-phase="fase1">
             <div class="phase-dot orange">🎭</div>
             <div class="phase-toggle-meta">
-                <div class="phase-badge">1. fasea · 2 ordu</div>
+                <div class="phase-badge">1. fasea · Sarrera</div>
                 <div class="phase-toggle-title">Bisita bat simulatuz</div>
             </div>
             <div class="phase-chevron">▼</div>
         </button>
 
         <div class="phase-body" id="fase1">
-            <!-- Progress pips: 3 steps -->
             <div class="step-progress">
                 <div class="step-pip active" id="fase1-pip-0"></div>
                 <div class="step-pip" id="fase1-pip-1"></div>
-                <div class="step-pip" id="fase1-pip-2"></div>
-                <div class="step-pip" id="fase1-pip-3"></div>
             </div>
 
             <!-- STEP 1A -->
@@ -508,13 +505,38 @@
                 </div>
             </div>
 
-            <!-- STEP 1C -->
-            <div class="step-block" id="fase1-step-2">
-                <div class="step-label">1C · Adibideak</div>
-                <div class="step-title">Ikasleekin gela erabili ahal izateko adibideak</div>
-                <p class="step-desc">Gelak eskaintzen dizkigun aukerak ikusiko dugu: jolasak, talde-dinamikak eta multimedia edukia.</p>
+            <div class="step-nav" id="fase1-nav">
+                <button class="btn btn-prev" id="fase1-btn-prev" onclick="stepNav('fase1', -1)" style="display:none">← Aurrekoa</button>
+                <button class="btn btn-next" id="fase1-btn-next" onclick="stepNav('fase1', 1)">Hurrengoa →</button>
+                <span class="step-counter" id="fase1-counter">1 / 2</span>
+            </div>
+        </div>
+    </div>
 
-                <div class="micro-label" style="margin-top:0.5rem;">Pareten erabilera · jolasa</div>
+    <!-- ══ FASE 2 ══ -->
+    <div class="phase-group">
+        <button class="phase-toggle" onclick="togglePhase(this)" data-phase="fase2">
+            <div class="phase-dot orange" style="background:rgba(201,149,42,0.18); border-color:rgba(201,149,42,0.45);">🎓</div>
+            <div class="phase-toggle-meta">
+                <div class="phase-badge" style="color:#C9952A;">2. fasea · Adibideak</div>
+                <div class="phase-toggle-title">Ikasleekin gela erabili ahal izateko adibideak</div>
+            </div>
+            <div class="phase-chevron">▼</div>
+        </button>
+
+        <div class="phase-body" id="fase2" style="border-color:rgba(201,149,42,0.3);">
+            <div class="step-progress">
+                <div class="step-pip active" id="fase2-pip-0" style="background:rgba(201,149,42,0.5);"></div>
+                <div class="step-pip" id="fase2-pip-1"></div>
+                <div class="step-pip" id="fase2-pip-2"></div>
+                <div class="step-pip" id="fase2-pip-3"></div>
+            </div>
+
+            <!-- STEP 2A: Jolasa -->
+            <div class="step-block active" id="fase2-step-0">
+                <div class="step-label" style="color:#C9952A;">2A · Jolasa</div>
+                <div class="step-title">Pareten erabilera</div>
+                <p class="step-desc">Gelako paretetan edukia nola proiektatu eta kudeatu ikasiko dugu.</p>
                 <div class="card-grid">
                     <a href="https://script.google.com/macros/s/AKfycbxMfGhZt68X3YPK2T9FsaN4GstzrphgiJPWcWB2WroTmLklPClsyUHfJL3HnvBiIySv/exec" class="card" target="_blank" rel="noopener">
                         <div class="card-icon">🎮</div>
@@ -529,8 +551,13 @@
                         <div class="card-arrow">Ireki ↗</div>
                     </a>
                 </div>
+            </div>
 
-                <div class="micro-label">Talde-jokoa</div>
+            <!-- STEP 2B: Kahoot -->
+            <div class="step-block" id="fase2-step-1">
+                <div class="step-label" style="color:#C9952A;">2B · Talde-jokoa</div>
+                <div class="step-title">Kahoot · Nominak</div>
+                <p class="step-desc">Taldea aktibatzeko eta giroa beroa jartzeko dinamika.</p>
                 <div class="card-grid">
                     <a href="https://kahoot.it" class="card" target="_blank" rel="noopener">
                         <div class="card-icon">⚡</div>
@@ -539,8 +566,13 @@
                         <div class="card-arrow">Ireki ↗</div>
                     </a>
                 </div>
+            </div>
 
-                <div class="micro-label">Genially</div>
+            <!-- STEP 2C: Genially -->
+            <div class="step-block" id="fase2-step-2">
+                <div class="step-label" style="color:#C9952A;">2C · Genially</div>
+                <div class="step-title">Scape Room edo Trivial</div>
+                <p class="step-desc">Bi aukera. Gelak eskaintzen duen dinamika kolaboratiboa.</p>
                 <div class="card-grid">
                     <a href="https://view.genially.com/69ea0b19f266f297fc815d91" class="card" target="_blank" rel="noopener">
                         <div class="card-icon">🔐</div>
@@ -557,9 +589,9 @@
                 </div>
             </div>
 
-            <!-- STEP 1D: YouTube -->
-            <div class="step-block" id="fase1-step-3">
-                <div class="step-label">1D · Multimedia</div>
+            <!-- STEP 2D: YouTube -->
+            <div class="step-block" id="fase2-step-3">
+                <div class="step-label" style="color:#C9952A;">2D · Multimedia</div>
                 <div class="step-title">YouTube 360°</div>
                 <p class="step-desc">Saioa amaitzeko 360 graduko bideo bat jarriko dugu. Zikloen arabera aukeratuko dugu.</p>
                 <div class="note">
@@ -587,35 +619,34 @@
                 </div>
             </div>
 
-            <!-- NAV -->
-            <div class="step-nav" id="fase1-nav">
-                <button class="btn btn-prev" id="fase1-btn-prev" onclick="stepNav('fase1', -1)" style="display:none">← Aurrekoa</button>
-                <button class="btn btn-next" id="fase1-btn-next" onclick="stepNav('fase1', 1)">Hurrengoa →</button>
-                <span class="step-counter" id="fase1-counter">1 / 4</span>
+            <div class="step-nav" id="fase2-nav">
+                <button class="btn btn-prev" id="fase2-btn-prev" onclick="stepNav('fase2', -1)" style="display:none">← Aurrekoa</button>
+                <button class="btn btn-next" id="fase2-btn-next" onclick="stepNav('fase2', 1)" style="background:#C9952A;">Hurrengoa →</button>
+                <span class="step-counter" id="fase2-counter">1 / 4</span>
             </div>
         </div>
     </div>
 
-    <!-- ══ FASE 2 ══ -->
+    <!-- ══ FASE 3 ══ -->
     <div class="phase-group">
-        <button class="phase-toggle green-phase" onclick="togglePhase(this)" data-phase="fase2">
+        <button class="phase-toggle green-phase" onclick="togglePhase(this)" data-phase="fase3">
             <div class="phase-dot green">🚀</div>
             <div class="phase-toggle-meta">
-                <div class="phase-badge green">2. fasea · 3. ordua</div>
+                <div class="phase-badge green">3. fasea · 3. ordua</div>
                 <div class="phase-toggle-title">Autonomia — Sistema martxan jartzea</div>
             </div>
             <div class="phase-chevron">▼</div>
         </button>
 
-        <div class="phase-body green-border" id="fase2">
+        <div class="phase-body green-border" id="fase3">
             <div class="step-progress">
-                <div class="step-pip active" id="fase2-pip-0"></div>
-                <div class="step-pip" id="fase2-pip-1"></div>
+                <div class="step-pip active" id="fase3-pip-0"></div>
+                <div class="step-pip" id="fase3-pip-1"></div>
             </div>
 
-            <!-- STEP 2A -->
-            <div class="step-block active" id="fase2-step-0">
-                <div class="step-label green">2A · Azalpena</div>
+            <!-- STEP 3A -->
+            <div class="step-block active" id="fase3-step-0">
+                <div class="step-label green">3A · Azalpena</div>
                 <div class="step-title">Ordu honen hasieran</div>
                 <p class="step-desc">Parte hartu dutenek sistema beraiek martxan jartzen dute. Kanpoko bisita bat etorriko balitz bezala jardungo dute.</p>
                 <div class="note green">
@@ -623,9 +654,9 @@
                 </div>
             </div>
 
-            <!-- STEP 2B -->
-            <div class="step-block" id="fase2-step-1">
-                <div class="step-label green">2B · Praktika</div>
+            <!-- STEP 3B -->
+            <div class="step-block" id="fase3-step-1">
+                <div class="step-label green">3B · Praktika</div>
                 <div class="step-title">Jardueraren sekuentzia</div>
                 <p class="step-desc">Irakasleak beraien kabuz egingo dute, laguntzarik gabe.</p>
                 <div class="seq-list">
@@ -661,11 +692,10 @@
                 </div>
             </div>
 
-            <!-- NAV -->
-            <div class="step-nav" id="fase2-nav">
-                <button class="btn btn-prev" id="fase2-btn-prev" onclick="stepNav('fase2', -1)" style="display:none">← Aurrekoa</button>
-                <button class="btn btn-next green" id="fase2-btn-next" onclick="stepNav('fase2', 1)">Hurrengoa →</button>
-                <span class="step-counter" id="fase2-counter">1 / 2</span>
+            <div class="step-nav" id="fase3-nav">
+                <button class="btn btn-prev" id="fase3-btn-prev" onclick="stepNav('fase3', -1)" style="display:none">← Aurrekoa</button>
+                <button class="btn btn-next green" id="fase3-btn-next" onclick="stepNav('fase3', 1)">Hurrengoa →</button>
+                <span class="step-counter" id="fase3-counter">1 / 2</span>
             </div>
         </div>
     </div>
@@ -695,8 +725,9 @@
 
     // ── Stepper state ──
     const state = {
-        fase1: { current: 0, total: 4 },
-        fase2: { current: 0, total: 2 },
+        fase1: { current: 0, total: 2 },
+        fase2: { current: 0, total: 4 },
+        fase3: { current: 0, total: 2 },
     };
 
     function stepNav(phase, dir) {
@@ -710,13 +741,11 @@
         const total = s.total;
         const cur = s.current;
 
-        // show/hide step blocks
         for (let i = 0; i < total; i++) {
             const block = document.getElementById(`${phase}-step-${i}`);
             if (block) block.classList.toggle('active', i === cur);
         }
 
-        // pips
         for (let i = 0; i < total; i++) {
             const pip = document.getElementById(`${phase}-pip-${i}`);
             if (!pip) continue;
@@ -725,27 +754,19 @@
             else if (i === cur) pip.classList.add('active');
         }
 
-        // prev button
         const prev = document.getElementById(`${phase}-btn-prev`);
         if (prev) prev.style.display = cur === 0 ? 'none' : 'inline-flex';
 
-        // next / finish button
         const next = document.getElementById(`${phase}-btn-next`);
         if (next) {
             if (cur === total - 1) {
                 next.textContent = '✓ Amaituta';
                 next.classList.add('btn-finish');
                 next.onclick = () => {
-                    // close phase, open next if any
-                    const allBodies = document.querySelectorAll('.phase-body');
-                    const allBtns = document.querySelectorAll('.phase-toggle');
-                    const currentBody = document.getElementById(phase);
-                    currentBody.classList.remove('open');
-                    // find corresponding toggle and deactivate
-                    allBtns.forEach(b => { if (b.dataset.phase === phase) b.classList.remove('active'); });
-                    // open next phase
-                    const phases = ['fase1', 'fase2'];
+                    const phases = ['fase1', 'fase2', 'fase3'];
                     const idx = phases.indexOf(phase);
+                    document.querySelectorAll('.phase-body').forEach(b => b.classList.remove('open'));
+                    document.querySelectorAll('.phase-toggle').forEach(b => b.classList.remove('active'));
                     if (idx >= 0 && idx + 1 < phases.length) {
                         const nextPhase = phases[idx + 1];
                         const nextBody = document.getElementById(nextPhase);
@@ -762,7 +783,6 @@
             }
         }
 
-        // counter
         const counter = document.getElementById(`${phase}-counter`);
         if (counter) counter.textContent = `${cur + 1} / ${total}`;
     }
