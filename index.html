@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DB · Gela Interaktiboa</title>
+    <title>DB · Gela Interaktiboa Erabiltzen</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
@@ -14,11 +14,10 @@
             --navy-light: #6080C0;
             --orange: #E85D1A;
             --orange-light: #FF7A3C;
-            --orange-glow: rgba(232, 93, 26, 0.15);
+            --orange-glow: rgba(232,93,26,0.15);
             --text-light: #FFFFFF;
-            --text-muted: rgba(255,255,255,0.78);
+            --text-muted: rgba(255,255,255,0.82);
             --gold: #C9952A;
-            --green: #1A7A4A;
             --green-glow: rgba(26,122,74,0.15);
         }
 
@@ -37,10 +36,8 @@
         .hero {
             position: relative;
             min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+            display: flex; flex-direction: column;
+            justify-content: center; align-items: center;
             text-align: center;
             padding: 3rem 2rem 6rem;
             overflow: hidden;
@@ -48,40 +45,37 @@
         .hero-bg {
             position: absolute; inset: 0;
             background:
-                radial-gradient(ellipse 80% 60% at 50% 110%, rgba(232,93,26,0.2) 0%, transparent 65%),
-                radial-gradient(ellipse 50% 40% at 85% 15%, rgba(43,74,138,0.35) 0%, transparent 60%),
+                radial-gradient(ellipse 80% 60% at 50% 110%, rgba(232,93,26,0.22) 0%, transparent 65%),
+                radial-gradient(ellipse 50% 40% at 85% 15%, rgba(30,50,110,0.4) 0%, transparent 60%),
                 var(--navy);
             z-index: 0;
         }
         .hero-bg::before {
             content: ''; position: absolute;
-            top: -80px; right: -80px;
-            width: 420px; height: 420px;
+            top: -80px; right: -80px; width: 420px; height: 420px;
             border: 1px solid rgba(232,93,26,0.1); border-radius: 50%;
         }
         .hero-bg::after {
             content: ''; position: absolute;
-            bottom: 40px; left: -100px;
-            width: 300px; height: 300px;
-            border: 1px solid rgba(43,74,138,0.25); border-radius: 50%;
+            bottom: 40px; left: -100px; width: 300px; height: 300px;
+            border: 1px solid rgba(255,255,255,0.08); border-radius: 50%;
         }
         .hero-grid {
             position: absolute; inset: 0;
             background-image:
-                linear-gradient(rgba(255,255,255,0.022) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255,255,255,0.022) 1px, transparent 1px);
+                linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
             background-size: 60px 60px;
         }
         .hero-content { position: relative; z-index: 1; max-width: 820px; }
 
         .eyebrow {
             display: inline-flex; align-items: center; gap: 10px;
-            font-size: 0.72rem; font-weight: 500;
+            font-size: 0.75rem; font-weight: 500;
             letter-spacing: 0.2em; text-transform: uppercase;
             color: var(--orange-light);
-            margin-bottom: 1.5rem;
-            padding: 6px 18px;
-            border: 1px solid rgba(232,93,26,0.3); border-radius: 999px;
+            margin-bottom: 1.5rem; padding: 7px 18px;
+            border: 1px solid rgba(232,93,26,0.35); border-radius: 999px;
         }
         .eyebrow-dot {
             width: 6px; height: 6px;
@@ -97,13 +91,12 @@
             font-family: 'Syne', sans-serif;
             font-size: clamp(2.6rem, 7vw, 5rem);
             font-weight: 800; line-height: 1.0;
-            letter-spacing: -0.02em;
-            margin-bottom: 1.2rem;
+            letter-spacing: -0.02em; margin-bottom: 1.2rem;
         }
         .hero h1 .accent { color: var(--orange); display: block; }
 
         .hero-sub {
-            font-size: 1.3rem; font-weight: 300;
+            font-size: 1.25rem; font-weight: 300;
             color: var(--text-muted); line-height: 1.75;
             max-width: 560px; margin: 0 auto 2.5rem;
         }
@@ -114,94 +107,200 @@
         }
         .pill {
             display: flex; align-items: center; gap: 8px;
-            padding: 8px 16px;
-            background: rgba(255,255,255,0.06);
-            border: 1px solid rgba(255,255,255,0.1);
+            padding: 8px 18px;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.15);
             border-radius: 999px;
-            font-size: 0.92rem; color: var(--text-muted);
+            font-size: 0.95rem; color: var(--text-muted);
         }
-        .pill-icon { font-size: 14px; }
-        .pill strong { color: #fff; font-weight: 500; }
+        .pill strong { color: #fff; font-weight: 600; }
 
         .scroll-hint {
             position: absolute; bottom: 2rem; left: 50%;
             transform: translateX(-50%); z-index: 1;
             display: flex; flex-direction: column; align-items: center; gap: 8px;
-            color: var(--text-muted); font-size: 0.72rem; letter-spacing: 0.1em;
+            color: var(--text-muted); font-size: 0.75rem; letter-spacing: 0.1em;
         }
         .scroll-hint .arrow {
             width: 22px; height: 22px;
-            border-right: 1.5px solid rgba(255,255,255,0.4);
-            border-bottom: 1.5px solid rgba(255,255,255,0.4);
+            border-right: 1.5px solid rgba(255,255,255,0.5);
+            border-bottom: 1.5px solid rgba(255,255,255,0.5);
             transform: rotate(45deg);
             animation: bounce 1.8s ease-in-out infinite;
         }
         @keyframes bounce {
             0%,100% { transform: rotate(45deg) translateY(0); }
-            50% { transform: rotate(45deg) translateY(5px); }
+            50% { transform: rotate(45deg) translateY(6px); }
         }
 
-        /* ═══ TIMELINE ═══ */
-        .timeline-wrapper {
-            max-width: 940px;
+        /* ═══ STEPPER WRAPPER ═══ */
+        .stepper-wrapper {
+            max-width: 860px;
             margin: 0 auto;
-            padding: 0 1.5rem 6rem;
+            padding: 3rem 1.5rem 6rem;
         }
 
-        .phase {
-            position: relative;
-            margin-bottom: 4rem;
-        }
-        .phase::before {
-            content: '';
-            position: absolute;
-            left: 22px; top: 52px; bottom: -4rem;
-            width: 1px;
-            background: linear-gradient(to bottom, rgba(232,93,26,0.4), rgba(232,93,26,0.04));
-        }
-        .phase:last-child::before { display: none; }
+        /* ═══ PHASE (collapsible group) ═══ */
+        .phase-group { margin-bottom: 2rem; }
 
-        .phase-header {
-            display: flex; align-items: flex-start; gap: 20px;
-            margin-bottom: 1.8rem;
+        .phase-toggle {
+            width: 100%;
+            display: flex; align-items: center; gap: 16px;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 16px;
+            padding: 1.2rem 1.5rem;
+            cursor: pointer;
+            transition: all 0.22s;
+            text-align: left;
         }
+        .phase-toggle:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: rgba(255,255,255,0.2);
+        }
+        .phase-toggle.active {
+            background: rgba(232,93,26,0.1);
+            border-color: rgba(232,93,26,0.35);
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+        .phase-toggle.active.green-phase {
+            background: rgba(26,122,74,0.1);
+            border-color: rgba(26,122,74,0.35);
+        }
+
         .phase-dot {
-            width: 44px; height: 44px; flex-shrink: 0;
+            width: 46px; height: 46px; flex-shrink: 0;
             border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
-            font-size: 18px; position: relative; z-index: 1;
+            font-size: 20px;
         }
-        .phase-dot.orange { background: rgba(232,93,26,0.15); border: 1px solid rgba(232,93,26,0.4); }
-        .phase-dot.green  { background: var(--green-glow);    border: 1px solid rgba(26,122,74,0.4); }
+        .phase-dot.orange { background: rgba(232,93,26,0.18); border: 1px solid rgba(232,93,26,0.4); }
+        .phase-dot.green  { background: rgba(26,122,74,0.2);  border: 1px solid rgba(26,122,74,0.45); }
 
-        .phase-time {
-            font-size: 0.8rem; font-weight: 600;
+        .phase-toggle-meta { flex: 1; }
+        .phase-badge {
+            font-size: 0.72rem; font-weight: 600;
             letter-spacing: 0.15em; text-transform: uppercase;
-            color: var(--orange); margin-bottom: 4px;
+            color: var(--orange); margin-bottom: 3px;
         }
-        .phase-time.green { color: #3DB874; }
-
-        .phase-title {
+        .phase-badge.green { color: #3DB874; }
+        .phase-toggle-title {
             font-family: 'Syne', sans-serif;
-            font-size: 2rem; font-weight: 700; color: #ffffff; line-height: 1.1;
-        }
-        .phase-desc {
-            font-size: 1.2rem; color: var(--text-muted);
-            line-height: 1.7; margin-top: 6px; max-width: 580px;
+            font-size: 1.5rem; font-weight: 700; color: #fff;
         }
 
-        .phase-body { margin-left: 64px; }
+        .phase-chevron {
+            width: 28px; height: 28px; flex-shrink: 0;
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 12px; color: rgba(255,255,255,0.6);
+            transition: transform 0.3s;
+        }
+        .phase-toggle.active .phase-chevron { transform: rotate(180deg); }
 
-        .sub-phase { margin-bottom: 2rem; }
-        .sub-label {
-            display: flex; align-items: center; gap: 10px;
-            font-size: 0.78rem; font-weight: 600;
+        /* Phase body container */
+        .phase-body {
+            display: none;
+            background: rgba(0,0,0,0.1);
+            border: 1px solid rgba(232,93,26,0.25);
+            border-top: none;
+            border-bottom-left-radius: 16px;
+            border-bottom-right-radius: 16px;
+            padding: 0;
+            overflow: hidden;
+        }
+        .phase-body.green-border {
+            border-color: rgba(26,122,74,0.3);
+        }
+        .phase-body.open { display: block; }
+
+        /* ═══ STEPPER INSIDE PHASE ═══ */
+        .stepper { position: relative; }
+
+        .step-block {
+            display: none;
+            padding: 2rem 2rem 1.5rem;
+            animation: fadeIn 0.3s ease;
+        }
+        .step-block.active { display: block; }
+
+        @keyframes fadeIn {
+            from { opacity:0; transform: translateY(10px); }
+            to   { opacity:1; transform: translateY(0); }
+        }
+
+        /* progress bar */
+        .step-progress {
+            display: flex; gap: 6px;
+            padding: 1.2rem 2rem 0;
+        }
+        .step-pip {
+            height: 3px; flex: 1; border-radius: 999px;
+            background: rgba(255,255,255,0.15);
+            transition: background 0.3s;
+        }
+        .step-pip.done   { background: rgba(232,93,26,0.7); }
+        .step-pip.active { background: var(--orange); }
+        .green-border .step-pip.done   { background: rgba(26,122,74,0.7); }
+        .green-border .step-pip.active { background: #3DB874; }
+
+        /* step header */
+        .step-label {
+            font-size: 0.75rem; font-weight: 600;
             letter-spacing: 0.16em; text-transform: uppercase;
-            color: rgba(255,255,255,0.5);
-            margin-bottom: 1rem;
+            color: var(--orange); margin-bottom: 0.5rem;
         }
-        .sub-label::after { content: ''; flex: 1; height: 1px; background: rgba(255,255,255,0.07); }
+        .step-label.green { color: #3DB874; }
 
+        .step-title {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.55rem; font-weight: 700; color: #fff;
+            margin-bottom: 0.7rem;
+        }
+        .step-desc {
+            font-size: 1.1rem; color: var(--text-muted);
+            line-height: 1.7; margin-bottom: 1.4rem;
+        }
+
+        /* nav buttons */
+        .step-nav {
+            display: flex; align-items: center;
+            gap: 10px; padding: 1rem 2rem 1.5rem;
+            border-top: 1px solid rgba(255,255,255,0.06);
+        }
+        .btn {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 0.75rem 1.4rem;
+            border-radius: 10px; border: none; cursor: pointer;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 1rem; font-weight: 500;
+            transition: all 0.2s;
+        }
+        .btn-next {
+            background: var(--orange); color: #fff;
+        }
+        .btn-next:hover { background: var(--orange-light); transform: translateY(-1px); }
+        .btn-next.green { background: #1A7A4A; }
+        .btn-next.green:hover { background: #22954f; }
+        .btn-prev {
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.15);
+            color: var(--text-muted);
+        }
+        .btn-prev:hover { background: rgba(255,255,255,0.14); color: #fff; }
+        .btn-finish {
+            background: #1A7A4A; color: #fff;
+        }
+        .btn-finish:hover { background: #22954f; transform: translateY(-1px); }
+
+        .step-counter {
+            margin-left: auto;
+            font-size: 0.85rem; color: rgba(255,255,255,0.4);
+        }
+
+        /* micro section label inside steps */
         .micro-label {
             font-size: 0.8rem; color: rgba(255,255,255,0.48);
             letter-spacing: 0.1em; text-transform: uppercase;
@@ -212,13 +311,12 @@
         .card-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 10px;
+            gap: 10px; margin-bottom: 1rem;
         }
         .card {
-            background: rgba(255,255,255,0.04);
-            border: 1px solid rgba(255,255,255,0.09);
-            border-radius: 14px;
-            padding: 1.2rem 1.1rem;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 14px; padding: 1.2rem 1.1rem;
             text-decoration: none; color: var(--text-light);
             display: flex; flex-direction: column; gap: 8px;
             transition: all 0.2s ease;
@@ -230,89 +328,83 @@
             background: linear-gradient(90deg, transparent, var(--orange), transparent);
             opacity: 0; transition: opacity 0.2s;
         }
-        .card:hover { background: rgba(232,93,26,0.07); border-color: rgba(232,93,26,0.28); transform: translateY(-2px); }
+        .card:hover { background: rgba(232,93,26,0.1); border-color: rgba(232,93,26,0.3); transform: translateY(-2px); }
         .card:hover::before { opacity: 1; }
         .card.no-link { cursor: default; }
-        .card.no-link:hover { transform: none; background: rgba(255,255,255,0.04); border-color: rgba(255,255,255,0.09); }
+        .card.no-link:hover { transform: none; background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.1); }
         .card.no-link:hover::before { opacity: 0; }
         .card.card-green::before { background: linear-gradient(90deg, transparent, #3DB874, transparent); }
-        .card.card-green:hover { background: rgba(26,122,74,0.08); border-color: rgba(26,122,74,0.3); }
+        .card.card-green:hover { background: rgba(26,122,74,0.1); border-color: rgba(26,122,74,0.35); }
 
         .card-icon {
-            width: 34px; height: 34px;
+            width: 36px; height: 36px;
             background: var(--orange-glow);
-            border: 1px solid rgba(232,93,26,0.2);
-            border-radius: 9px;
-            display: flex; align-items: center; justify-content: center; font-size: 16px;
+            border: 1px solid rgba(232,93,26,0.25);
+            border-radius: 10px;
+            display: flex; align-items: center; justify-content: center; font-size: 17px;
         }
-        .card-icon.gi { background: var(--green-glow); border-color: rgba(26,122,74,0.25); }
+        .card-icon.gi { background: var(--green-glow); border-color: rgba(26,122,74,0.3); }
 
-        .card-name { font-family: 'Syne', sans-serif; font-size: 1.22rem; font-weight: 600; color: #ffffff; }
-        .card-sub  { font-size: 1.12rem; color: var(--text-muted); line-height: 1.5; }
-        .card-arrow { margin-top: auto; font-size: 0.95rem; color: var(--orange); }
+        .card-name { font-family: 'Syne', sans-serif; font-size: 1.15rem; font-weight: 600; color: #fff; }
+        .card-sub  { font-size: 1rem; color: var(--text-muted); line-height: 1.5; }
+        .card-arrow { margin-top: auto; font-size: 0.9rem; color: var(--orange); }
         .card-arrow.g { color: #3DB874; }
 
-        /* ═══ BADGES ═══ */
         .badge {
-            display: inline-block; font-size: 0.62rem; font-weight: 600;
+            display: inline-block; font-size: 0.65rem; font-weight: 600;
             letter-spacing: 0.06em; text-transform: uppercase;
-            padding: 3px 8px; border-radius: 6px;
+            padding: 3px 9px; border-radius: 6px;
             background: rgba(201,149,42,0.15); color: var(--gold);
             border: 1px solid rgba(201,149,42,0.25);
         }
-        .badge.blue   { background: rgba(43,74,138,0.25);  color: #80A8E8; border-color: rgba(43,74,138,0.4); }
-        .badge.orange { background: rgba(232,93,26,0.15);  color: var(--orange-light); border-color: rgba(232,93,26,0.3); }
 
         /* ═══ VIDEO LIST ═══ */
-        .video-list { display: flex; flex-direction: column; gap: 8px; }
+        .video-list { display: flex; flex-direction: column; gap: 8px; margin-top: 0.5rem; }
         .video-item {
             display: flex; align-items: center; gap: 14px;
             padding: 13px 16px;
-            background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(255,255,255,0.07);
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.08);
             border-radius: 11px;
             text-decoration: none; color: inherit; transition: all 0.18s;
         }
-        .video-item:hover { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.13); }
-        .video-num  { font-family: 'Syne', sans-serif; font-size: 0.76rem; font-weight: 700; color: var(--orange); min-width: 22px; opacity: 0.65; }
-        .video-name { font-size: 1.2rem; color: #ffffff; flex: 1; }
-        .video-tag  { font-size: 0.92rem; color: var(--text-muted); }
+        .video-item:hover { background: rgba(255,255,255,0.09); border-color: rgba(255,255,255,0.15); }
+        .video-num  { font-family: 'Syne', sans-serif; font-size: 0.76rem; font-weight: 700; color: var(--orange); min-width: 22px; opacity: 0.7; }
+        .video-name { font-size: 1.05rem; color: #fff; flex: 1; }
+        .video-tag  { font-size: 0.85rem; color: var(--text-muted); }
 
         /* ═══ NOTE ═══ */
         .note {
-            background: rgba(43,74,138,0.1);
-            border: 1px solid rgba(43,74,138,0.2);
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
             border-left: 3px solid var(--navy-light);
             border-radius: 10px;
             padding: 0.9rem 1.1rem;
-            font-size: 1.05rem; color: var(--text-muted); line-height: 1.65;
+            font-size: 1rem; color: var(--text-muted); line-height: 1.65;
+            margin-bottom: 1rem;
         }
         .note strong { color: #fff; font-weight: 500; }
-        .note.orange { background: rgba(232,93,26,0.07); border-color: rgba(232,93,26,0.2); border-left-color: var(--orange); }
-        .note.green  { background: rgba(26,122,74,0.08);  border-color: rgba(26,122,74,0.2);  border-left-color: #3DB874; }
+        .note.green { background: rgba(26,122,74,0.1); border-color: rgba(26,122,74,0.2); border-left-color: #3DB874; }
 
         /* ═══ STEPS ═══ */
-        .step-list { display: flex; flex-direction: column; gap: 8px; }
-        .step {
+        .seq-list { display: flex; flex-direction: column; gap: 8px; margin-bottom: 1.2rem; }
+        .seq-item {
             display: flex; align-items: center; gap: 14px;
-            padding: 12px 16px;
-            background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(255,255,255,0.07);
+            padding: 13px 16px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.08);
             border-radius: 11px;
-            font-size: 1.12rem; color: var(--text-muted);
+            font-size: 1.05rem; color: var(--text-muted);
         }
-        .step-n { font-family: 'Syne', sans-serif; font-size: 0.78rem; font-weight: 700; color: #3DB874; min-width: 22px; }
-
-        .divider { height: 1px; background: rgba(255,255,255,0.06); margin: 1.4rem 0; }
-        .gap { height: 1rem; }
+        .seq-n { font-family: 'Syne', sans-serif; font-size: 0.78rem; font-weight: 700; color: #3DB874; min-width: 22px; }
 
         /* ═══ FOOTER ═══ */
         footer {
             text-align: center; padding: 2.5rem 1.5rem;
-            border-top: 1px solid rgba(255,255,255,0.06);
-            font-size: 0.78rem; color: var(--text-muted);
+            border-top: 1px solid rgba(255,255,255,0.08);
+            font-size: 0.82rem; color: var(--text-muted);
         }
-        footer .db { font-family: 'Syne', sans-serif; font-weight: 700; color: var(--orange); font-size: 1rem; }
+        footer .db { font-family: 'Syne', sans-serif; font-weight: 700; color: var(--orange); font-size: 1.05rem; }
 
         @keyframes fadeUp {
             from { opacity:0; transform:translateY(22px); }
@@ -338,49 +430,53 @@
         </div>
         <h1>
             Gela Interaktiboa
-            <span class="accent">Irakasleentzat</span>
+            <span class="accent">Erabiltzen</span>
         </h1>
         <p class="hero-sub">
-            Digitalizazioa ikasgelan: tresnak eta metodologia aktiboak ezagutuko ditugu,
-            bisita bat simulatuz eta sistema autonomoki erabiltzen ikasiz.
+            Irakasleentzako prestakuntza saioa: bisita bat simulatuz eta
+            sistema autonomoki martxan jartzen ikasiz.
         </p>
         <div class="hero-pills">
-            <div class="pill"><span class="pill-icon">🕐</span><strong>3 ordu</strong> iraupena</div>
-            <div class="pill"><span class="pill-icon">🎭</span><strong>2 ordu</strong> dinamikak</div>
-            <div class="pill"><span class="pill-icon">🚀</span><strong>1 ordu</strong> autonomia</div>
-            <div class="pill"><span class="pill-icon">👩‍🏫</span>Irakasleentzat</div>
+            <div class="pill">🕐 <strong>3 ordu</strong> iraupena</div>
+            <div class="pill">🎭 <strong>2 ordu</strong> dinamikak</div>
+            <div class="pill">🚀 <strong>1 ordu</strong> autonomia</div>
+            <div class="pill">👩‍🏫 Irakasleentzat</div>
         </div>
     </div>
     <div class="scroll-hint">
-        <span>jaitsi</span>
+        <span>hasi</span>
         <div class="arrow"></div>
     </div>
 </section>
 
-<!-- ═══════════════ TIMELINE ═══════════════ -->
-<div class="timeline-wrapper">
+<!-- ═══════════════ STEPPER ═══════════════ -->
+<div class="stepper-wrapper">
 
-    <!-- ══════ FASE 1: 2 ORDU ══════ -->
-    <div class="phase">
-        <div class="phase-header">
+    <!-- ══ FASE 1 ══ -->
+    <div class="phase-group">
+        <button class="phase-toggle" onclick="togglePhase(this)" data-phase="fase1">
             <div class="phase-dot orange">🎭</div>
-            <div class="phase-meta">
-                <div class="phase-time">1. fasea · 2 ordu</div>
-                <div class="phase-title">Bisita bat simulatuz</div>
-                <p class="phase-desc">
-                    Irakasleek bisitari rola hartuko dute. Kanpoko bisita bat balitz bezala jokatuko dugu.
-                </p>
+            <div class="phase-toggle-meta">
+                <div class="phase-badge">1. fasea · 2 ordu</div>
+                <div class="phase-toggle-title">Bisita bat simulatuz</div>
             </div>
-        </div>
+            <div class="phase-chevron">▼</div>
+        </button>
 
-        <div class="phase-body">
+        <div class="phase-body" id="fase1">
+            <!-- Progress pips: 3 steps -->
+            <div class="step-progress">
+                <div class="step-pip active" id="fase1-pip-0"></div>
+                <div class="step-pip" id="fase1-pip-1"></div>
+                <div class="step-pip" id="fase1-pip-2"></div>
+                <div class="step-pip" id="fase1-pip-3"></div>
+            </div>
 
-            <!-- 1A: SARRERA -->
-            <div class="sub-phase">
-                <div class="sub-label">1A · Sarrera — bisita simulazioa</div>
-                <p style="font-size:1.15rem; color:var(--text-muted); line-height:1.65; margin-bottom:0.9rem;">
-                    Irakasleak iristen ari direla, gela pizturik eta aurkezpen bideoa martxan egongo da. Bisita errealen giroa sortuko dugu.
-                </p>
+            <!-- STEP 1A -->
+            <div class="step-block active" id="fase1-step-0">
+                <div class="step-label">1A · Sarrera</div>
+                <div class="step-title">Bisita simulazioa</div>
+                <p class="step-desc">Irakasleek bisitari rola hartuko dute. Kanpoko bisita bat balitz bezala jokatuko dugu. Irakasleak iristen ari direla, gela pizturik eta aurkezpen bideoa martxan egongo da.</p>
                 <div class="card-grid">
                     <div class="card no-link">
                         <div class="card-icon">🎬</div>
@@ -391,14 +487,11 @@
                 </div>
             </div>
 
-            <div class="divider"></div>
-
-            <!-- 1B: QUIZZ -->
-            <div class="sub-phase">
-                <div class="sub-label">1B · Don Bosco Quizz</div>
-                <p style="font-size:1.15rem; color:var(--text-muted); line-height:1.65; margin-bottom:0.9rem;">
-                    Bisitariek egingo luketen quizz-a egingo dugu. Bi bertsioak erabilgarri daude.
-                </p>
+            <!-- STEP 1B -->
+            <div class="step-block" id="fase1-step-1">
+                <div class="step-label">1B · Quizz</div>
+                <div class="step-title">Don Bosco Quizz</div>
+                <p class="step-desc">Bisitariek egingo luketen quizz-a egingo dugu. Bi bertsioak erabilgarri daude.</p>
                 <div class="card-grid">
                     <a href="https://script.google.com/a/macros/donbosco.eus/s/AKfycbz0H3s9flbDOi008jYYDVuVvM3uhFjiPoJcvW9yvbCWPjVWQ4g6UZ3ZCjE21cKx652J7g/exec" class="card" target="_blank" rel="noopener">
                         <div class="card-icon">🧠</div>
@@ -415,172 +508,271 @@
                 </div>
             </div>
 
-            <div class="divider"></div>
+            <!-- STEP 1C -->
+            <div class="step-block" id="fase1-step-2">
+                <div class="step-label">1C · Adibideak</div>
+                <div class="step-title">Ikasleekin gela erabili ahal izateko adibideak</div>
+                <p class="step-desc">Gelak eskaintzen dizkigun aukerak ikusiko dugu: jolasak, talde-dinamikak eta multimedia edukia.</p>
 
-            <!-- 1C: ADIBIDEAK -->
-            <div class="sub-phase">
-                <div class="sub-label">1C · Ikasleekin gela erabili ahal izateko adibideak</div>
-                <p style="font-size:1.15rem; color:var(--text-muted); line-height:1.65; margin-bottom:1.2rem;">
-                    Gelak eskaintzen dizkigun aukerak ikusiko dugu: jolasak, talde-dinamikak eta multimedia edukia.
-                </p>
-
-                <!-- Pareten jolasa -->
-                <div style="margin-bottom:1.4rem;">
-                    <div class="micro-label">Pareten erabilera · jolasa</div>
-                    <div class="card-grid">
-                        <a href="https://script.google.com/macros/s/AKfycbxMfGhZt68X3YPK2T9FsaN4GstzrphgiJPWcWB2WroTmLklPClsyUHfJL3HnvBiIySv/exec" class="card" target="_blank" rel="noopener">
-                            <div class="card-icon">🎮</div>
-                            <div class="card-name">Jolastera</div>
-                            <div class="card-sub">Paretara bidali, leihoa handitu, mugitu, blokeatu…</div>
-                            <div class="card-arrow">Ireki ↗</div>
-                        </a>
-                        <a href="https://script.google.com/a/macros/donbosco.eus/s/AKfycbyoCrO2Jr_hvZDXbcxeRkmzVvAn6kshQ_XibP1mMUoM0N5k3e2Aci5BaGbp9B091tjSxw/exec" class="card" target="_blank" rel="noopener">
-                            <div class="card-icon">🕹️</div>
-                            <div class="card-name">A Jugar</div>
-                            <div class="card-sub">Domeinuko bertsio alternatiboa</div>
-                            <div class="card-arrow">Ireki ↗</div>
-                        </a>
-                    </div>
+                <div class="micro-label" style="margin-top:0.5rem;">Pareten erabilera · jolasa</div>
+                <div class="card-grid">
+                    <a href="https://script.google.com/macros/s/AKfycbxMfGhZt68X3YPK2T9FsaN4GstzrphgiJPWcWB2WroTmLklPClsyUHfJL3HnvBiIySv/exec" class="card" target="_blank" rel="noopener">
+                        <div class="card-icon">🎮</div>
+                        <div class="card-name">Jolastera</div>
+                        <div class="card-sub">Paretara bidali, leihoa handitu, mugitu, blokeatu…</div>
+                        <div class="card-arrow">Ireki ↗</div>
+                    </a>
+                    <a href="https://script.google.com/a/macros/donbosco.eus/s/AKfycbyoCrO2Jr_hvZDXbcxeRkmzVvAn6kshQ_XibP1mMUoM0N5k3e2Aci5BaGbp9B091tjSxw/exec" class="card" target="_blank" rel="noopener">
+                        <div class="card-icon">🕹️</div>
+                        <div class="card-name">A Jugar</div>
+                        <div class="card-sub">Domeinuko bertsio alternatiboa</div>
+                        <div class="card-arrow">Ireki ↗</div>
+                    </a>
                 </div>
 
-                <!-- Kahoot -->
-                <div style="margin-bottom:1.4rem;">
-                    <div class="micro-label">Talde-jokoa</div>
-                    <div class="card-grid">
-                        <a href="https://play.kahoot.it/v2/?quizId=51c4143c-5cdc-4b57-87d0-4c2f52001bf4" class="card" target="_blank" rel="noopener">
-                            <div class="card-icon">⚡</div>
-                            <div class="card-name">Kahoot · Nominak</div>
-                            <div class="card-sub">kahoot.it bidez sartu</div>
-                            <div class="card-arrow">Ireki ↗</div>
-                        </a>
-                    </div>
+                <div class="micro-label">Talde-jokoa</div>
+                <div class="card-grid">
+                    <a href="https://kahoot.it" class="card" target="_blank" rel="noopener">
+                        <div class="card-icon">⚡</div>
+                        <div class="card-name">Kahoot · Nominak</div>
+                        <div class="card-sub">kahoot.it bidez sartu</div>
+                        <div class="card-arrow">Ireki ↗</div>
+                    </a>
                 </div>
 
-                <!-- Genially -->
-                <div style="margin-bottom:1.4rem;">
-                    <div class="micro-label">Genially</div>
-                    <div class="card-grid">
-                        <a href="https://app.genially.com/editor/69ea0b19f266f297fc815d91?from=panel_redirection_view_open_genially" class="card" target="_blank" rel="noopener">
-                            <div class="card-icon">🔐</div>
-                            <div class="card-name">Scape Room</div>
-                            <div class="card-sub">Zein ateratzen da lehenengo?</div>
-                            <div class="card-arrow">Ireki ↗</div>
-                        </a>
-                        <a href="https://view.genially.com/69e7366740c428fcd31f1b27" class="card" target="_blank" rel="noopener">
-                            <div class="card-icon">🎯</div>
-                            <div class="card-name">Trivial</div>
-                            <div class="card-sub">Zein taldek lortuko du borobila osatzea?</div>
-                            <div class="card-arrow">Ireki ↗</div>
-                        </a>
-                    </div>
+                <div class="micro-label">Genially</div>
+                <div class="card-grid">
+                    <a href="https://view.genially.com/69ea0b19f266f297fc815d91" class="card" target="_blank" rel="noopener">
+                        <div class="card-icon">🔐</div>
+                        <div class="card-name">Scape Room</div>
+                        <div class="card-sub">Zein ateratzen da lehenengo?</div>
+                        <div class="card-arrow">Ireki ↗</div>
+                    </a>
+                    <a href="https://view.genially.com/69e7366740c428fcd31f1b27" class="card" target="_blank" rel="noopener">
+                        <div class="card-icon">🎯</div>
+                        <div class="card-name">Trivial</div>
+                        <div class="card-sub">Zein taldek lortuko du borobila osatzea?</div>
+                        <div class="card-arrow">Ireki ↗</div>
+                    </a>
                 </div>
+            </div>
 
-                <!-- YouTube 360 -->
-                <div>
-                    <div class="micro-label">YouTube 360°</div>
-                    <div class="note" style="margin-bottom:0.8rem;">
-                        <strong>Nola egin:</strong> YouTube-en bideoa abiarazi, pantaila osora pasa eta sagua erabiliz 360° mugitu. Zikloen arabera aukeratuko dugu.
-                    </div>
-                    <div class="video-list">
-                        <a href="https://www.youtube.com/watch?v=d9D5csXovEM&list=PLncOCZ_bu7NIiC4RmMJ8UUd8jWmSBQS1w&index=3&t=1s" class="video-item" target="_blank" rel="noopener">
-                            <span class="video-num">01</span><span class="video-name">Viaje al interior del cuerpo humano</span><span class="video-tag">Osasuna ↗</span>
-                        </a>
-                        <a href="https://www.youtube.com/watch?v=wfNvZwN87Hg" class="video-item" target="_blank" rel="noopener">
-                            <span class="video-num">02</span><span class="video-name">Racecar</span><span class="video-tag">Adrenalina ↗</span>
-                        </a>
-                        <a href="https://www.youtube.com/watch?v=SBia0Zv82VQ&list=PLncOCZ_bu7NIiC4RmMJ8UUd8jWmSBQS1w&index=23" class="video-item" target="_blank" rel="noopener">
-                            <span class="video-num">03</span><span class="video-name">El cerebro por dentro</span><span class="video-tag">Neurologia ↗</span>
-                        </a>
-                        <a href="https://www.youtube.com/watch?v=QR9I-e9Wq3U&list=PLncOCZ_bu7NIiC4RmMJ8UUd8jWmSBQS1w&index=9" class="video-item" target="_blank" rel="noopener">
-                            <span class="video-num">04</span><span class="video-name">Ascenso a un volcán</span><span class="video-tag">Geologia ↗</span>
-                        </a>
-                        <a href="https://www.youtube.com/watch?v=jqq_ZdD5Zwg" class="video-item" target="_blank" rel="noopener">
-                            <span class="video-num">05</span><span class="video-name">Relax</span><span class="video-tag">Ongizatea ↗</span>
-                        </a>
-                        <a href="https://www.youtube.com/watch?v=7AkbUfZjS5k" class="video-item" target="_blank" rel="noopener">
-                            <span class="video-num">06</span><span class="video-name">Relax II</span><span class="video-tag">Ongizatea ↗</span>
-                        </a>
-                    </div>
+            <!-- STEP 1D: YouTube -->
+            <div class="step-block" id="fase1-step-3">
+                <div class="step-label">1D · Multimedia</div>
+                <div class="step-title">YouTube 360°</div>
+                <p class="step-desc">Saioa amaitzeko 360 graduko bideo bat jarriko dugu. Zikloen arabera aukeratuko dugu.</p>
+                <div class="note">
+                    <strong>Nola egin:</strong> YouTube-en bideoa abiarazi, pantaila osora pasa eta sagua erabiliz 360° mugitu.
                 </div>
+                <div class="video-list">
+                    <a href="https://www.youtube.com/watch?v=d9D5csXovEM&list=PLncOCZ_bu7NIiC4RmMJ8UUd8jWmSBQS1w&index=3&t=1s" class="video-item" target="_blank" rel="noopener">
+                        <span class="video-num">01</span><span class="video-name">Viaje al interior del cuerpo humano</span><span class="video-tag">Osasuna ↗</span>
+                    </a>
+                    <a href="https://www.youtube.com/watch?v=wfNvZwN87Hg" class="video-item" target="_blank" rel="noopener">
+                        <span class="video-num">02</span><span class="video-name">Racecar</span><span class="video-tag">Adrenalina ↗</span>
+                    </a>
+                    <a href="https://www.youtube.com/watch?v=SBia0Zv82VQ&list=PLncOCZ_bu7NIiC4RmMJ8UUd8jWmSBQS1w&index=23" class="video-item" target="_blank" rel="noopener">
+                        <span class="video-num">03</span><span class="video-name">El cerebro por dentro</span><span class="video-tag">Neurologia ↗</span>
+                    </a>
+                    <a href="https://www.youtube.com/watch?v=QR9I-e9Wq3U&list=PLncOCZ_bu7NIiC4RmMJ8UUd8jWmSBQS1w&index=9" class="video-item" target="_blank" rel="noopener">
+                        <span class="video-num">04</span><span class="video-name">Ascenso a un volcán</span><span class="video-tag">Geologia ↗</span>
+                    </a>
+                    <a href="https://www.youtube.com/watch?v=jqq_ZdD5Zwg" class="video-item" target="_blank" rel="noopener">
+                        <span class="video-num">05</span><span class="video-name">Relax</span><span class="video-tag">Ongizatea ↗</span>
+                    </a>
+                    <a href="https://www.youtube.com/watch?v=7AkbUfZjS5k" class="video-item" target="_blank" rel="noopener">
+                        <span class="video-num">06</span><span class="video-name">Relax II</span><span class="video-tag">Ongizatea ↗</span>
+                    </a>
+                </div>
+            </div>
 
-            </div><!-- /sub-phase 1C -->
-        </div><!-- /phase-body 1 -->
-    </div><!-- /phase 1 -->
-
-
-    <!-- ══════ FASE 2: 3. ORDUA — AUTONOMIA ══════ -->
-    <div class="phase">
-        <div class="phase-header">
-            <div class="phase-dot green">🚀</div>
-            <div class="phase-meta">
-                <div class="phase-time green">2. fasea · 3. ordua</div>
-                <div class="phase-title">Autonomia — Sistema martxan jartzea</div>
-                <p class="phase-desc">
-                    Parte hartu dutenek sistema beraiek martxan jartzen dute. Kanpoko bisita bat etorriko balitz bezala jardungo dute, hasieratik amaierara.
-                </p>
+            <!-- NAV -->
+            <div class="step-nav" id="fase1-nav">
+                <button class="btn btn-prev" id="fase1-btn-prev" onclick="stepNav('fase1', -1)" style="display:none">← Aurrekoa</button>
+                <button class="btn btn-next" id="fase1-btn-next" onclick="stepNav('fase1', 1)">Hurrengoa →</button>
+                <span class="step-counter" id="fase1-counter">1 / 4</span>
             </div>
         </div>
+    </div>
 
-        <div class="phase-body">
+    <!-- ══ FASE 2 ══ -->
+    <div class="phase-group">
+        <button class="phase-toggle green-phase" onclick="togglePhase(this)" data-phase="fase2">
+            <div class="phase-dot green">🚀</div>
+            <div class="phase-toggle-meta">
+                <div class="phase-badge green">2. fasea · 3. ordua</div>
+                <div class="phase-toggle-title">Autonomia — Sistema martxan jartzea</div>
+            </div>
+            <div class="phase-chevron">▼</div>
+        </button>
 
-            <div class="sub-phase">
-                <div class="sub-label">Ordu honen hasieran — azalpena</div>
+        <div class="phase-body green-border" id="fase2">
+            <div class="step-progress">
+                <div class="step-pip active" id="fase2-pip-0"></div>
+                <div class="step-pip" id="fase2-pip-1"></div>
+            </div>
+
+            <!-- STEP 2A -->
+            <div class="step-block active" id="fase2-step-0">
+                <div class="step-label green">2A · Azalpena</div>
+                <div class="step-title">Ordu honen hasieran</div>
+                <p class="step-desc">Parte hartu dutenek sistema beraiek martxan jartzen dute. Kanpoko bisita bat etorriko balitz bezala jardungo dute.</p>
                 <div class="note green">
                     <strong>Lehenik:</strong> Nola egiten den erakutsiko dugu — gela piztu, aurkezpen bideoa jarri (USB bidez ere nola exekutatu barne) eta quizz-a martxan jarri. Gero, eurek egingo dute beraien kabuz.
                 </div>
             </div>
 
-            <div class="gap"></div>
-
-            <div class="sub-phase">
-                <div class="sub-label">Jardueraren sekuentzia</div>
-                <div class="step-list">
-                    <div class="step">
-                        <span class="step-n">01</span>
+            <!-- STEP 2B -->
+            <div class="step-block" id="fase2-step-1">
+                <div class="step-label green">2B · Praktika</div>
+                <div class="step-title">Jardueraren sekuentzia</div>
+                <p class="step-desc">Irakasleak beraien kabuz egingo dute, laguntzarik gabe.</p>
+                <div class="seq-list">
+                    <div class="seq-item">
+                        <span class="seq-n">01</span>
                         <span>Gela <strong style="color:#fff;">piztu</strong> eta sistema abiarazi</span>
                     </div>
-                    <div class="step">
-                        <span class="step-n">02</span>
+                    <div class="seq-item">
+                        <span class="seq-n">02</span>
                         <span><strong style="color:#fff;">Aurkezpen bideoa</strong> jarri — bisitariak iristen diren bitartean</span>
                     </div>
-                    <div class="step">
-                        <span class="step-n">03</span>
+                    <div class="seq-item">
+                        <span class="seq-n">03</span>
                         <span><strong style="color:#fff;">Don Bosco Quizz-a</strong> martxan jarri eta bisitariekin egin</span>
                     </div>
                 </div>
-
-                <div style="margin-top:1.2rem;">
-                    <div class="card-grid">
-                        <a href="https://script.google.com/a/macros/donbosco.eus/s/AKfycbz0H3s9flbDOi008jYYDVuVvM3uhFjiPoJcvW9yvbCWPjVWQ4g6UZ3ZCjE21cKx652J7g/exec" class="card card-green" target="_blank" rel="noopener">
-                            <div class="card-icon gi">🧠</div>
-                            <div class="card-name">Bisitaren aurretik</div>
-                            <div class="card-sub">Euskarazko quizz-a</div>
-                            <div class="card-arrow g">Ireki ↗</div>
-                        </a>
-                        <a href="https://script.google.com/a/macros/donbosco.eus/s/AKfycbz13QCqL2gt2BpvkJM0GUfFBBV1lW8wEm8sn_7z-88DHWXxprDhqFD2QG1pzKkjAInK2w/exec" class="card card-green" target="_blank" rel="noopener">
-                            <div class="card-icon gi">🧩</div>
-                            <div class="card-name">Antes de la visita</div>
-                            <div class="card-sub">Gaztelaniazko quizz-a</div>
-                            <div class="card-arrow g">Ireki ↗</div>
-                        </a>
-                    </div>
+                <div class="card-grid">
+                    <a href="https://script.google.com/a/macros/donbosco.eus/s/AKfycbz0H3s9flbDOi008jYYDVuVvM3uhFjiPoJcvW9yvbCWPjVWQ4g6UZ3ZCjE21cKx652J7g/exec" class="card card-green" target="_blank" rel="noopener">
+                        <div class="card-icon gi">🧠</div>
+                        <div class="card-name">Bisitaren aurretik</div>
+                        <div class="card-sub">Euskarazko quizz-a</div>
+                        <div class="card-arrow g">Ireki ↗</div>
+                    </a>
+                    <a href="https://script.google.com/a/macros/donbosco.eus/s/AKfycbz13QCqL2gt2BpvkJM0GUfFBBV1lW8wEm8sn_7z-88DHWXxprDhqFD2QG1pzKkjAInK2w/exec" class="card card-green" target="_blank" rel="noopener">
+                        <div class="card-icon gi">🧩</div>
+                        <div class="card-name">Antes de la visita</div>
+                        <div class="card-sub">Gaztelaniazko quizz-a</div>
+                        <div class="card-arrow g">Ireki ↗</div>
+                    </a>
                 </div>
-
-                <div class="note green" style="margin-top:1rem;">
-                    <strong>Helburua:</strong> Saioaren amaieran, irakasleak sistema berak martxan jarri dezake, laguntzarik gabe, hurrengo bisita erreal baterako prest.
+                <div class="note green" style="margin-top:0.5rem;">
+                    <strong>Helburua:</strong> Saioaren amaieran, irakasleak sistema berak martxan jarri dezake hurrengo bisita erreal baterako prest.
                 </div>
             </div>
 
-        </div><!-- /phase-body 2 -->
-    </div><!-- /phase 2 -->
+            <!-- NAV -->
+            <div class="step-nav" id="fase2-nav">
+                <button class="btn btn-prev" id="fase2-btn-prev" onclick="stepNav('fase2', -1)" style="display:none">← Aurrekoa</button>
+                <button class="btn btn-next green" id="fase2-btn-next" onclick="stepNav('fase2', 1)">Hurrengoa →</button>
+                <span class="step-counter" id="fase2-counter">1 / 2</span>
+            </div>
+        </div>
+    </div>
 
-</div><!-- /timeline-wrapper -->
+</div><!-- /stepper-wrapper -->
 
 <footer>
     <p class="db">CIFP Don Bosco LHII</p>
     <p style="margin-top:6px;">Errenteria · Gipuzkoa</p>
-    <p style="margin-top:4px; font-size:0.7rem; opacity:0.38;">Irakasleen Prestakuntza · Gela Interaktiboa</p>
+    <p style="margin-top:4px; font-size:0.72rem; opacity:0.38;">Irakasleen Prestakuntza · Gela Interaktiboa Erabiltzen</p>
 </footer>
+
+<script>
+    // ── Phase toggle ──
+    function togglePhase(btn) {
+        const phaseId = btn.dataset.phase;
+        const body = document.getElementById(phaseId);
+        const isOpen = body.classList.contains('open');
+        // close all
+        document.querySelectorAll('.phase-body').forEach(b => b.classList.remove('open'));
+        document.querySelectorAll('.phase-toggle').forEach(b => b.classList.remove('active'));
+        if (!isOpen) {
+            body.classList.add('open');
+            btn.classList.add('active');
+        }
+    }
+
+    // ── Stepper state ──
+    const state = {
+        fase1: { current: 0, total: 4 },
+        fase2: { current: 0, total: 2 },
+    };
+
+    function stepNav(phase, dir) {
+        const s = state[phase];
+        s.current = Math.max(0, Math.min(s.total - 1, s.current + dir));
+        renderStep(phase);
+    }
+
+    function renderStep(phase) {
+        const s = state[phase];
+        const total = s.total;
+        const cur = s.current;
+
+        // show/hide step blocks
+        for (let i = 0; i < total; i++) {
+            const block = document.getElementById(`${phase}-step-${i}`);
+            if (block) block.classList.toggle('active', i === cur);
+        }
+
+        // pips
+        for (let i = 0; i < total; i++) {
+            const pip = document.getElementById(`${phase}-pip-${i}`);
+            if (!pip) continue;
+            pip.classList.remove('active', 'done');
+            if (i < cur) pip.classList.add('done');
+            else if (i === cur) pip.classList.add('active');
+        }
+
+        // prev button
+        const prev = document.getElementById(`${phase}-btn-prev`);
+        if (prev) prev.style.display = cur === 0 ? 'none' : 'inline-flex';
+
+        // next / finish button
+        const next = document.getElementById(`${phase}-btn-next`);
+        if (next) {
+            if (cur === total - 1) {
+                next.textContent = '✓ Amaituta';
+                next.classList.add('btn-finish');
+                next.onclick = () => {
+                    // close phase, open next if any
+                    const allBodies = document.querySelectorAll('.phase-body');
+                    const allBtns = document.querySelectorAll('.phase-toggle');
+                    const currentBody = document.getElementById(phase);
+                    currentBody.classList.remove('open');
+                    // find corresponding toggle and deactivate
+                    allBtns.forEach(b => { if (b.dataset.phase === phase) b.classList.remove('active'); });
+                    // open next phase
+                    const phases = ['fase1', 'fase2'];
+                    const idx = phases.indexOf(phase);
+                    if (idx >= 0 && idx + 1 < phases.length) {
+                        const nextPhase = phases[idx + 1];
+                        const nextBody = document.getElementById(nextPhase);
+                        const nextBtn = document.querySelector(`[data-phase="${nextPhase}"]`);
+                        if (nextBody) nextBody.classList.add('open');
+                        if (nextBtn) nextBtn.classList.add('active');
+                        nextBody.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                };
+            } else {
+                next.textContent = 'Hurrengoa →';
+                next.classList.remove('btn-finish');
+                next.onclick = () => stepNav(phase, 1);
+            }
+        }
+
+        // counter
+        const counter = document.getElementById(`${phase}-counter`);
+        if (counter) counter.textContent = `${cur + 1} / ${total}`;
+    }
+
+    // Open first phase by default
+    document.addEventListener('DOMContentLoaded', () => {
+        const first = document.querySelector('.phase-toggle');
+        if (first) togglePhase(first);
+    });
+</script>
 
 </body>
 </html>
